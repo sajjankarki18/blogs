@@ -1,0 +1,3 @@
+what is a CSRF token in django?
+-> The csrf_token is a token that Django generates for each user session and includes in forms to ensure that the form is submitted from the same site and by the same user who requested the page.
+ This helps prevent CSRF attacks by verifying that the request is legitimate.

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends 'blog_routes/base.html' %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Blogs</title>
+</head>
+
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                {% for blog in blogs %}
+                <div class="card m-3">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title">{{blog.title}},  <span class="text-muted fs-6" style="margin-left: 4px;">by {{blog.user.username}}</span></h5>
+                            <p class="badge bg-secondary">{{blog.category}}</p>
+                        </div>
+                        <p class="card-text">{{blog.description|truncatewords:55}}</p>
+                        <p class="card-text"><small class="text-muted">{{blog.date}}</small></p>
+                        <a href="{% url 'yourBlogs' blog.id %}" class="btn btn-outline-secondary btn-sm">read more -></a>
+                    </div>
+                </div>
+                {% empty %}
+                <p class="text-danger text-center">no blogs currently!</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+</body>
+
+</html>

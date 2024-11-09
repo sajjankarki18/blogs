@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'blog_routes/base.html' %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EditBlog</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3 m-2">
+                            <input value="{{blogs.title}}" name="title" placeholder="Enter a new category..." type="text" class="form-control" id="floatingInputGrid"
+                                value="">
+                        </div>
+                        <div class="form-floating m-2">
+                            <textarea required name="description" class="form-control" placeholder="Leave a description here for the blog" style="height: 450px">
+                                {{blogs.description}}
+                            </textarea>
+                        </div>
+                        <button class="btn btn-outline-secondary btn-sm m-2">update blog</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+</body>
+</html>

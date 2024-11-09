@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% extends 'blog_routes/base.html' %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div class="m-2">
+                            <label for="">{{field.label}}</label>
+                            {{field}}
+                            <!-- if there is an error in the form then return with a custom errors -->
+                            {% if field.errors %}
+                            <div class="text-danger">
+                                {{field.errors}}
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                        <button class="btn btn-secondary btn-sm m-2">Register</button>
+                    </form>
+                    <p class="m-2">Already have an account? <a href="{% url 'userLogin' %}">sign in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+</body>
+
+</html>

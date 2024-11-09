@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+{% extends 'blog_routes/base.html' %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    {% block content %}
+    {% for message in messages %}
+    {% if message.level_tag == 'success' %}
+    <div class="container">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong class="text-center">{{ message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    {% elif message.level_tag == 'error' %}
+    <div class="container">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong class="text-center">{{ message }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h1>{{blogs.title}}</h1>
+                                {% if blogs.user == blogs.user %}
+                                <span class="text-muted" style="margin-right: 5px;">
+                                    -by {{blogs.user.username}},
+                                </span>
+                                {% endif %}
+                                <span class="text-muted">
+                                    published at - {{blogs.date}}
+                                </span>
+                            </div>
+                            <div class="actions-container">
+                                {% if request.user == blogs.user %}
+                                <a href="{% url 'editBlogs' blogs.id %}"><i class="bi bi-pencil-square"></i></a>
+                                <a href="{% url 'deleteBlogs' blogs.id %}"><i class="bi bi-trash3 mx-3"></i></a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <p>
+                            {{blogs.description|safe|linebreaks}}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- comment section div -->
+                <div class="mt-4">
+                    <p>Share some reviews: </p>
+                    <div class="input-group mb-3">
+                        <form action="{% url 'addComment' blogs.id%}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-floating">
+                                <textarea required name="comments" class="form-control"
+                                    placeholder="Leave a comment here..." id="floatingTextarea2"
+                                    style="height: 100px; width: 1110px"></textarea>
+                                <label for="floatingTextarea2">Comments</label>
+                            </div>
+                            <button class="btn btn-outline-success mt-3">comment</button>
+                        </form>
+                    </div>
+
+                    <!-- comment section container -->
+                    {% for comment in comments %}
+                    <div class="card mb-3">
+                        <form action="">
+                            <div class="card-body">
+                                {% if comment.user == comment.user %}
+                                <div class="d-flex justify-content-between">
+                                    <p><b>@{{comment.user.username}}</b></p>
+                                    <a href="{% url 'deleteComment' comment.id %}"><i class="bi bi-trash3 mx-3"></i></a>
+                                </div>
+                                <p>{{comment.comment}}</p>
+                                <p class="text-muted">{{blogs.date}}</p>
+                                {% endif %}
+                            </div>
+                        </form>
+                    </div>
+                    {% empty %}
+                    <p style="color: red;">The comments are empty, Be the first one to comment...!</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% extends 'blog_routes/base.html' %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Blog</title>
+</head>
+
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <div class="card blog-form">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row g-2">
+                            <div class="col-md m-2 mt-4">
+                                <div class="form-floating">
+                                    <input placeholder="Enter a title..." required name="title" type="text" class="form-control" id="floatingInputGrid"
+                                        value="">
+                                    <label for="floatingInputGrid">Blog Title...</label>
+                                </div>
+                            </div>
+                            <div class="col-md m-2 mt-4">
+                                <div class="form-floating">
+                                    <select name="category" class="form-select" id="floatingSelectGrid"
+                                        aria-label="Floating label select example">
+                                        <option value="none">Select an existing category...</option>
+                                        {% for category in categories %}
+                                        <option value="{{category.id}}">{{category.name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <label for="floatingSelectGrid">Blog categories</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3 m-2">
+                            <label for="form-label">New category</label>
+                            <input name="new_category" placeholder="Enter a new category..." type="text" class="form-control" id="floatingInputGrid"
+                                value="">
+                        </div>
+                        <div class="form-floating m-2">
+                            <textarea required name="description" class="form-control" placeholder="Leave a description here for the blog"
+                                id="floatingTextarea2" style="height: 200px"></textarea>
+                            <label for="floatingTextarea2">Blog description...</label>
+                        </div>
+                        <button type="submit" class="btn btn-secondary btn-sm m-2">add blog</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+</body>
+
+</html>

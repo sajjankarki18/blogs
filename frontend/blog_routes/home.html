@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% extends 'blog_routes/base.html' %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogify</title>
+</head>
+
+<body>
+    {% block content %}
+    {% for message in messages %}
+    {% if message.level_tag == 'success' %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ message }}</strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <div class="card box-card">
+                    <div class="bg-light p-3 rounded">
+                        <h2>Blogify - A blogging application</h2>
+                        <p class="lead">We love Blogify as much as you do!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5 d-flex justify-content-around">
+        <div class="row">
+            <div class="col-md-12">
+                {% for blog in blogs %}
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="card-title">{{blog.title}}</h5>
+                                    <p class="badge bg-secondary">{{blog.category}}</p>
+                                </div>
+                                <p class="card-text">{{blog.description|truncatewords:24}}</p>
+                                <p class="card-text"><small class="text-muted">{{blog.date}}</small></p>
+                                <a href="{% url 'yourBlogs' blog.id %}" class="btn btn-outline-secondary btn-sm">read
+                                    more -></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <p style="color: red;">No blogs currently!</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-header">About us</div>
+                    <div class="card-body text-secondary">
+                        <h5 class="card-title">Blogify</h5>
+                        <p class="card-text">Welcome to our blogify app that provides fast and efficeint blogging
+                            services...</p>
+                        <button class="btn btn-outline-secondary btn-sm">Know more</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+</body>
+
+</html>
