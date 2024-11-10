@@ -1,14 +1,112 @@
-body{
-    margin-bottom: 1000px;
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
 }
 
-.box-card{
+p {
+    font-family: "Faculty Glyphic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.alert-success {
+    margin-top: 20px;
+}
+
+.btn-outline-secondary {
+    border-radius: 0;
+    /* Remove border-radius to make buttons square */
+}
+
+.container {
+    margin-top: 30px;
+}
+
+.box-card {
+    background-color: #ffffff;
+    border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
-.actions-container a i{
-    width: 300px;
-    height: 300px;
-    cursor: pointer;
-    color: black;
+.card {
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #343a40;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.badge {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 20px;
+}
+
+.btn-outline-secondary {
+    border-radius: 20px;
+}
+
+.bg-light {
+    background-color: #f1f1f1;
+}
+
+.about-us-card {
+    margin-top: 30px;
+    border-radius: 8px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.about-us-card .card-header {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.about-us-card .card-body {
+    background-color: #ffffff;
+}
+
+.about-us-card .btn-outline-secondary {
+    width: 100%;
+    font-weight: bold;
+}
+
+.about-us-card .card-body .card-text {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.about-us-card .card-title {
+    color: #343a40;
+}
+
+.lead {
+    font-size: 1.25rem;
+    color: #495057;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+.col-md-9,
+.col-md-12 {
+    margin-bottom: 20px;
 }

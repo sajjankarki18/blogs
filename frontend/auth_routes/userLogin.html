@@ -16,19 +16,19 @@
                 <div class="card">
                     <form action="" method="POST">
                         {% csrf_token %}
-                        <div class="mb-3 m-2">
+                        <div class="mb-3 m-3">
                             <label>Username</label>
                             <input required name="username" type="text" placeholder="enter your username..." class="form-control" id=""
                                 aria-describedby="">
                             <div id="emailHelp" class="form-text">We'll never share your information with anyone else.</div>
                         </div>
-                        <div class="mb-3 m-2">
+                        <div class="mb-3 m-3">
                             <label for="exampleInputPassword1" class="form-label">Password</label>
                             <input required name="password" type="password" placeholder="enter your password..." class="form-control" id="exampleInputPassword1">
                         </div>
-                        <button type="submit" class="btn btn-secondary btn-sm m-2">log in</button>
+                        <button type="submit" class="btn btn-secondary btn-sm m-3">log in</button>
                     </form>
-                    <p class="m-2">Don't have an account? <a href="{% url 'userRegistration' %}">create account</a></p>
+                    <p class="m-3">Don't have an account? <a href="{% url 'userRegistration' %}">create account</a></p>
                 </div>
                 {% for message in messages %}
                 <p class="text-danger mt-2">{{message}}</p>
