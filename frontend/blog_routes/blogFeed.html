@@ -15,15 +15,15 @@
         <div class="row justify-content-center">
             <div class="col-md-9">
                 {% for blog in blogs %}
-                <div class="card m-3">
+                <div class="card m-2">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-between m-2">
                             <h5 class="card-title">{{blog.title}},  <span class="text-muted fs-6" style="margin-left: 4px;">by {{blog.user.username}}</span></h5>
                             <p class="badge bg-secondary">{{blog.category}}</p>
                         </div>
-                        <p class="card-text">{{blog.description|truncatewords:55}}</p>
-                        <p class="card-text"><small class="text-muted">{{blog.date}}</small></p>
-                        <a href="{% url 'yourBlogs' blog.id %}" class="btn btn-outline-secondary btn-sm">read more -></a>
+                        <p class="card-text m-2">{{blog.description|truncatewords:55}}</p>
+                        <p class="card-text m-2"><small class="text-muted">{{blog.date}}</small></p>
+                        <a href="{% url 'yourBlogs' blog.id %}" class="btn btn-outline-dark btn-sm m-2">read more -></a>
                     </div>
                 </div>
                 {% empty %}

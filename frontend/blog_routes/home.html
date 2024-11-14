@@ -12,7 +12,16 @@
 <body>
     {% block content %}
     {% for message in messages %}
-    {% if message.level_tag == 'success' %}
+    {% if message.level_tag == 'info' %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+    {% for message in messages %}
+    {% if message.level_tag == 'add_message' %}
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>{{ message }}</strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -46,7 +55,7 @@
                                 </div>
                                 <p class="card-text">{{blog.description|truncatewords:24}}</p>
                                 <p class="card-text"><small class="text-muted">{{blog.date}}</small></p>
-                                <a href="{% url 'yourBlogs' blog.id %}" class="btn btn-outline-secondary btn-sm">read
+                                <a href="{% url 'yourBlogs' blog.id %}" class="btn btn-outline-dark btn-sm">read
                                     more -></a>
                             </div>
                         </div>
@@ -65,7 +74,7 @@
                         <h5 class="card-title">Blogify</h5>
                         <p class="card-text">Welcome to our blogify app that provides fast and efficient blogging
                             services...</p>
-                        <button class="btn btn-outline-secondary btn-sm">Know more</button>
+                        <button class="btn btn-outline-dark btn-sm">Know more</button>
                     </div>
                 </div>
             </div>

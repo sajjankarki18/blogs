@@ -3,6 +3,7 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
+
 p {
     font-family: "Faculty Glyphic", sans-serif;
     font-weight: 400;
@@ -11,11 +12,6 @@ p {
 
 .alert-success {
     margin-top: 20px;
-}
-
-.btn-outline-secondary {
-    border-radius: 0;
-    /* Remove border-radius to make buttons square */
 }
 
 .container {
@@ -82,7 +78,7 @@ p {
     background-color: #ffffff;
 }
 
-.about-us-card .btn-outline-secondary {
+.about-us-card {
     width: 100%;
     font-weight: bold;
 }

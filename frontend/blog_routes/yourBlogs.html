@@ -67,9 +67,9 @@
                                 <textarea required name="comments" class="form-control"
                                     placeholder="Leave a comment here..." id="floatingTextarea2"
                                     style="height: 100px; width: 1110px"></textarea>
-                                <label for="floatingTextarea2">Comments</label>
+                                <label for="floatingTextarea2">add a comment...</label>
                             </div>
-                            <button class="btn btn-outline-success mt-3">comment</button>
+                            <button class="btn btn-outline-success btn-sm mt-3">comment</button>
                         </form>
                     </div>
 
@@ -81,7 +81,10 @@
                                 {% if comment.user == comment.user %}
                                 <div class="d-flex justify-content-between">
                                     <p><b>@{{comment.user.username}}</b></p>
-                                    <a href="{% url 'deleteComment' comment.id %}"><i class="bi bi-trash3 mx-3"></i></a>
+                                    <!-- here giving access to delete the comment only to the author of the post and the one who commented -->
+                                    {% if request.user == comment.user or request.user == blogs.user %}
+                                    <a style="color: black;" href="{% url 'deleteComment' comment.id %}"><i class="bi bi-trash3 mx-3"></i></a>
+                                    {% endif %}
                                 </div>
                                 <p>{{comment.comment}}</p>
                                 <p class="text-muted">{{blogs.date}}</p>

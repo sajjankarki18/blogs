@@ -18,6 +18,7 @@ def userLogin(request):
         
         if user is not None:
             login(request, user)
+            messages.info(request, f"logged in as {username}")
             return redirect('home')
         else:
             messages.info(request, 'Invalid credentials! Please try again...')
@@ -47,6 +48,7 @@ def userRegistration(request):
                 
                 if user is not None:
                     login(request, user)
+                    messages.info(request, f"logged in as {username}")
                     return redirect('home')
                 else:
                     messages.info(request, "Invalid credentials! Try again...")
